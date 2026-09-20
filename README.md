@@ -1,6 +1,9 @@
 # MQTTW
 
 > MQTT 调试 · 压测一体化桌面客户端
+<div align="center">
+简体中文 | [English](./README_EN.md)
+</div>
 
 **MQTTW** 是一款基于 **Wails3 + Go + Vue3** 构建的专业 MQTT 桌面调试工具，全面支持 **MQTT 3.1 / 3.1.1 / 5.0** 协议，集连接调试、消息收发、多连接管理与大规模客户端压测于一体，适用于物联网（IoT）开发、Broker 联调验证与性能压测场景。
 
@@ -170,11 +173,15 @@ MQTTW/
         ├── router/             # 路由
         └── locale/             # 国际化
 ```
-## 构建和包装
+### 开发启动
+```
+wails3 dev
+```
+### 构建和包装
 ```
 wails3 package
 ```
-# Windows 封装 
+#### Windows 封装 
 使用NSIS安装器
 ```
 wails3 package GOOS=windows INSTALL_SCOPE=user  
@@ -183,11 +190,11 @@ MSIX 软件包，对于 Microsoft Store 发行版或现代 Windows 部署：
 ```
 wails3 package GOOS=windows FORMAT=msix
 ```
-### macOS 封装
+#### macOS 封装
 ```
 wails3 package GOOS=darwin
 ```
-###  Linux 封装
+####  Linux 封装
 ```
 wails3 build GOOS=linux GOARCH=arm64
 wails3 package GOOS=linux GOARCH=arm64
