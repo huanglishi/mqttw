@@ -1,0 +1,19 @@
+.task
+gofly.exe
+cmd.exe
+deps.exe
+bin
+tmp_verify
+tmp_mcp_diag
+runtime
+frontend/dist
+frontend/node_modules
+build/linux/appimage/build
+build/windows/nsis/MicrosoftEdgeWebview2Setup.exe
+# Mobile generated (per-machine; overlays hold absolute paths)
+build/ios/xcode/overlay.json
+build/ios/xcode/gen/
+build/android/overlay.json
+build/android/gen/
+resource/db/data.db-shm
+resource/db/data.db-wal

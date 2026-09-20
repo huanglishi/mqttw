@@ -1,0 +1,296 @@
+{
+  "id": "5231040",
+  "name": "MQTTW",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "39312750",
+      "name": "收信管理-copy",
+      "font_class": "receive_message",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "15617501",
+      "name": "messages",
+      "font_class": "messages",
+      "unicode": "e8e3",
+      "unicode_decimal": 59619
+    },
+    {
+      "icon_id": "1001456",
+      "name": "acewill-leaveback",
+      "font_class": "acewill-leaveback",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "45230035",
+      "name": "多协议支持",
+      "font_class": "duoxieyizhichi",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "44924867",
+      "name": "topic",
+      "font_class": "a-1",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "43799035",
+      "name": "删除对话",
+      "font_class": "shanchuduihua",
+      "unicode": "e7de",
+      "unicode_decimal": 59358
+    },
+    {
+      "icon_id": "17290022",
+      "name": "压测light",
+      "font_class": "stress",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "48366970",
+      "name": "压测Ultron",
+      "font_class": "stress-selecte",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "22269025",
+      "name": "接收信息",
+      "font_class": "jieshouxinxi",
+      "unicode": "e75a",
+      "unicode_decimal": 59226
+    },
+    {
+      "icon_id": "28251503",
+      "name": "接收信息",
+      "font_class": "chat-received",
+      "unicode": "e7c5",
+      "unicode_decimal": 59333
+    },
+    {
+      "icon_id": "39556615",
+      "name": "发送人",
+      "font_class": "chat-publish",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "3547263",
+      "name": "发送",
+      "font_class": "send1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "8385360",
+      "name": "发送",
+      "font_class": "fasong",
+      "unicode": "e88a",
+      "unicode_decimal": 59530
+    },
+    {
+      "icon_id": "8482531",
+      "name": "发送",
+      "font_class": "send2",
+      "unicode": "e6e6",
+      "unicode_decimal": 59110
+    },
+    {
+      "icon_id": "29694998",
+      "name": "发送、导航-m",
+      "font_class": "send-m",
+      "unicode": "e7e2",
+      "unicode_decimal": 59362
+    },
+    {
+      "icon_id": "44141121",
+      "name": "清除记录",
+      "font_class": "clear-data",
+      "unicode": "e788",
+      "unicode_decimal": 59272
+    },
+    {
+      "icon_id": "25051853",
+      "name": "断开连接",
+      "font_class": "duankailianjie",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "43931561",
+      "name": "断开连接",
+      "font_class": "a-ziyuan5",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "46294698",
+      "name": "高级筛选批量添加",
+      "font_class": "connect-batch1",
+      "unicode": "e828",
+      "unicode_decimal": 59432
+    },
+    {
+      "icon_id": "46962546",
+      "name": "批量添加",
+      "font_class": "connect-batch2",
+      "unicode": "e84a",
+      "unicode_decimal": 59466
+    },
+    {
+      "icon_id": "47597662",
+      "name": "批量添加",
+      "font_class": "connect-batch3",
+      "unicode": "e89d",
+      "unicode_decimal": 59549
+    },
+    {
+      "icon_id": "26393486",
+      "name": "icon_连接",
+      "font_class": "connect6",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "43601249",
+      "name": "Gc_48_public-AssociationOutlined",
+      "font_class": "connect5",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "18662850",
+      "name": "连接",
+      "font_class": "lianjie3",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "33683188",
+      "name": "连接",
+      "font_class": "lianjie4",
+      "unicode": "e688",
+      "unicode_decimal": 59016
+    },
+    {
+      "icon_id": "29907918",
+      "name": "com-file-open",
+      "font_class": "file-open",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "29907919",
+      "name": "com-file-close",
+      "font_class": "file-close",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "48465903",
+      "name": "mqtt",
+      "font_class": "connect",
+      "unicode": "e840",
+      "unicode_decimal": 59456
+    },
+    {
+      "icon_id": "2736189",
+      "name": "关于",
+      "font_class": "guanyu",
+      "unicode": "e686",
+      "unicode_decimal": 59014
+    },
+    {
+      "icon_id": "11264015",
+      "name": "关于",
+      "font_class": "guanyu1",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "11641882",
+      "name": "关于",
+      "font_class": "guanyu2",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "25315763",
+      "name": "连接",
+      "font_class": "lianjie",
+      "unicode": "e6f1",
+      "unicode_decimal": 59121
+    },
+    {
+      "icon_id": "25915587",
+      "name": "连接",
+      "font_class": "lianjie1",
+      "unicode": "e6c7",
+      "unicode_decimal": 59079
+    },
+    {
+      "icon_id": "31938349",
+      "name": "连接器配置",
+      "font_class": "a-jianqu43",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "32414288",
+      "name": "SimpleMQTT",
+      "font_class": "SimpleMQTT",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "39772123",
+      "name": "MQTT",
+      "font_class": "MQTT",
+      "unicode": "e83f",
+      "unicode_decimal": 59455
+    },
+    {
+      "icon_id": "44725760",
+      "name": "MQTT",
+      "font_class": "MQTT1",
+      "unicode": "e70c",
+      "unicode_decimal": 59148
+    },
+    {
+      "icon_id": "45029410",
+      "name": "MQTT",
+      "font_class": "MQTT2",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "45651501",
+      "name": "连接",
+      "font_class": "lianjie2",
+      "unicode": "e7a5",
+      "unicode_decimal": 59301
+    },
+    {
+      "icon_id": "48130637",
+      "name": "mqtt",
+      "font_class": "connect-selecte",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "23015134",
+      "name": "系统",
+      "font_class": "xitong",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    }
+  ]
+}

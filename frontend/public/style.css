@@ -1,0 +1,99 @@
+:root {
+    /* Neon-night design tokens. */
+    --ink: #06070f;            /* darkest base behind the image */
+    --text: #f4f6fb;
+    --muted: #9aa6c0;
+    --accent: #ff4d4d;         /* Wails red */
+    --accent-2: #ff2d72;       /* pink, used in gradients */
+    --glass: rgba(255, 255, 255, 0.05);
+    --glass-strong: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --radius: 11px;
+    --grad: linear-gradient(135deg, #ff5a4d 0%, #ff2d72 100%);
+
+    /* Golden-ratio spacing scale (φ ≈ 1.618), used for the vertical rhythm. */
+    --s-1: 0.618rem;   /* φ⁻¹ */
+    --s-2: 1rem;
+    --s-3: 1.618rem;   /* φ   */
+    --s-4: 2.618rem;   /* φ²  */
+    --s-5: 4.236rem;   /* φ³  */
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    color: var(--text);
+}
+body {
+    overflow-x: hidden;
+    /* Nothing in the chrome is selectable (it's an app, not a document); the
+       text input opts back in below. */
+    -webkit-user-select: none;
+    user-select: none;
+    /* Drag the window by its background. Interactive controls opt out with
+       --wails-draggable: no-drag (the property inherits). */
+    /* --wails-draggable: drag; */
+}
+
+/* Framework mount nodes (#app / #root) shouldn't affect layout, so the
+   body flex centering applies directly to .container. */
+#app, #root { display: contents; }
+
+/* Interactive elements: clickable (not draggable) and, for the input, selectable. */
+.brand-mark, .brand-badge, .input-box, .btn, .footer-docs, .toast {
+    --wails-draggable: no-drag;
+}
+.input, input[type="text"] {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+/* ----- Background layer ----------------------------------------------------
+   A fixed, full-viewport layer rather than `background-attachment: fixed`
+   (which iOS WKWebView ignores / renders janky). A dark gradient is layered
+   over the photo so foreground text stays legible. On desktop the gradient is
+   weighted to the left, where the content sits. */
+
+body {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;             /* content area + footer pinned to the bottom */
+}
+
+#app{
+    width: 100vw;
+    height: 100vh;
+}
+.container{
+  height: 100vh;
+  overflow-y: auto;
+ }
+/* ----- Mobile -------------------------------------------------------------- */
+@media (max-width: 640px) {
+    .container { align-items: center; text-align: center; margin: 0 auto; }
+    /* Stack the title onto two lines ("Wails +" / "Javascript") like the target. */
+    .title-accent { display: block; }
+    .subtitle { margin-left: auto; margin-right: auto; }
+    /* A touch more width back on small screens so the input stays usable. */
+    .greet { width: 86%; }
+    /* Trim the surround on a phone, but keep the input at 16px (iOS focus-zoom
+       guard) — only the padding/button/icon shrink, not the field's text. */
+    .input-box { padding: 3px 4px 3px 10px; gap: 6px; }
+    .input-icon { width: 21px; height: 21px; }
+    .input { font-size: 16px; padding: 4px 2px; }
+    .btn { padding: 5px 13px; font-size: 14px; gap: 5px; }
+    .btn svg { width: 16px; height: 16px; }
+    /* Three items (version / clock / docs) share a narrow row — shrink to fit. */
+    .footer { font-size: 11px; gap: 4px; }
+    .footer-time { gap: 5px; }
+    .footer-time svg { width: 13px; height: 13px; }
+}

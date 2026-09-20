@@ -1,0 +1,226 @@
+{
+  "id": "4136370",
+  "name": "桌面应用通用",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "GoFly系列electron开发桌面应用",
+  "glyphs": [
+    {
+      "icon_id": "19115035",
+      "name": "Chatbot管理默认图标",
+      "font_class": "Chatbotguanlimorentubiao",
+      "unicode": "e6a7",
+      "unicode_decimal": 59047
+    },
+    {
+      "icon_id": "27088291",
+      "name": "Frame备份 7",
+      "font_class": "a-Framebeifen7",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "14092715",
+      "name": "子菜单",
+      "font_class": "zicaidan1",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "26447960",
+      "name": "icon_子菜单",
+      "font_class": "zicaidan",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "25983553",
+      "name": "Go",
+      "font_class": "go",
+      "unicode": "e793",
+      "unicode_decimal": 59283
+    },
+    {
+      "icon_id": "10459959",
+      "name": "打开新窗口-4",
+      "font_class": "dakaixinchuangkou-",
+      "unicode": "e6d3",
+      "unicode_decimal": 59091
+    },
+    {
+      "icon_id": "14272554",
+      "name": "网页",
+      "font_class": "wangye",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "3769201",
+      "name": "dialog",
+      "font_class": "dialog",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "10339850",
+      "name": "5706 - Warning on Browser",
+      "font_class": "-WarningonBrowser",
+      "unicode": "e71e",
+      "unicode_decimal": 59166
+    },
+    {
+      "icon_id": "42016759",
+      "name": "warning",
+      "font_class": "warning",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "42344083",
+      "name": "执行事件",
+      "font_class": "zhihangshijian",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "3864527",
+      "name": "文件",
+      "font_class": "wenjian",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "21721551",
+      "name": "文件类型-标准图-文件夹",
+      "font_class": "wenjianleixing-biaozhuntu-wenjianjia",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "8550690",
+      "name": "qw-icon-noties-filled-light",
+      "font_class": "filled",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "3759622",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "7199864",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "14059119",
+      "name": "微信",
+      "font_class": "weixin1",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "41785286",
+      "name": "deepseek大语言模型",
+      "font_class": "deepseekdayuyanmoxing",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "11981767",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "e979",
+      "unicode_decimal": 59769
+    },
+    {
+      "icon_id": "15181603",
+      "name": "账号",
+      "font_class": "zhanghao",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "1321522",
+      "name": "UI设计网",
+      "font_class": "UIshejiwang",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "9624288",
+      "name": "利润分析框架",
+      "font_class": "lirunfenxikuangjia",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "12663057",
+      "name": "框架",
+      "font_class": "kuangjia",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "18358916",
+      "name": "我是硬件厂家",
+      "font_class": "woshiyingjianchangjia",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "21055530",
+      "name": "硬件层",
+      "font_class": "yingjianceng",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "23015134",
+      "name": "系统",
+      "font_class": "xitong",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    },
+    {
+      "icon_id": "26403976",
+      "name": "UI-选中",
+      "font_class": "UI-xuanzhong",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "33561331",
+      "name": "UIIcon-网站设计",
+      "font_class": "UIIcon",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "34250772",
+      "name": "系统集成",
+      "font_class": "xitongjicheng",
+      "unicode": "e7df",
+      "unicode_decimal": 59359
+    },
+    {
+      "icon_id": "35514068",
+      "name": "系统管理",
+      "font_class": "xitongguanli",
+      "unicode": "e766",
+      "unicode_decimal": 59238
+    },
+    {
+      "icon_id": "36139989",
+      "name": "框架",
+      "font_class": "kuangjia1",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    }
+  ]
+}

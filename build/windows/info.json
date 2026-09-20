@@ -1,0 +1,15 @@
+{
+	"fixed": {
+		"file_version": "0.1.0"
+	},
+	"info": {
+		"0000": {
+			"ProductVersion": "0.1.0",
+			"CompanyName": "昆明立师科技有限公司",
+			"FileDescription": "MQTTW MQTT调试与压力测试桌面客户端",
+			"LegalCopyright": "© 2026, 昆明立师科技有限公司",
+			"ProductName": "MQTTW",
+			"Comments": "基于 Wails3 + GMQTT，支持MQTT消息调试、发布订阅、载荷解析、设备模拟、Broker压力压测。跨平台物联网工具。"
+		}
+	}
+}

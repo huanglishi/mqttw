@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=My Product
+Comment=A wails3_beta application
+# The Exec line includes %u to pass the URL to the application
+Exec=/usr/local/bin/wails3_beta.exe %u
+Terminal=false
+Type=Application
+Icon=wails3_beta.exe
+Categories=Utility;
+StartupWMClass=wails3_beta.exe
+
+ 

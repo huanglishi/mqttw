@@ -1,0 +1,20 @@
+//http请求操作
+export default {
+  'request.save.loading': '提交中',
+  'request.save.success': '提交成功',
+  'request.update.loading': '更新中',
+  'request.update.success': '更新成功',
+  'request.del.loading': '删除中',
+  'request.del.success': '删除成功',
+  'request.resetServe.loading': '重啓中',
+  'request.resetServe.success': '重啓成功',
+  'request.reset.loading': '恢複中',
+  'request.reset.success': '恢複成功',
+  'request.modify.loading': '修改中',
+  'request.modify.success': '修改成功',
+  'request.import.loading': '導入中',
+  'request.import.success': '導入成功',
+  'request.upload.loading': '上傳中',
+  'request.upload.success': '上傳成功',
+  'request.upload.error': '上傳失敗',
+};
