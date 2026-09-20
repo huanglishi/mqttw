@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://goflys.cn/mqttw" target="_blank">
-    <img alt="MQTTW Logo" width="200" src="https://doc.goflys.cn/image/mqttwicon.png"/>
+    <img alt="MQTTW Logo" width="150" src="https://doc.goflys.cn/image/mqttwicon.png"/>
   </a>
 </div>
 
