@@ -2,7 +2,9 @@
 
 > MQTT 调试 · 压测一体化桌面客户端
 <div align="center">
+
 简体中文 | [English](./README_EN.md)
+
 </div>
 
 **MQTTW** 是一款基于 **Wails3 + Go + Vue3** 构建的专业 MQTT 桌面调试工具，全面支持 **MQTT 3.1 / 3.1.1 / 5.0** 协议，集连接调试、消息收发、多连接管理与大规模客户端压测于一体，适用于物联网（IoT）开发、Broker 联调验证与性能压测场景。

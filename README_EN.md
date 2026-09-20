@@ -1,8 +1,10 @@
 # MQTTW
 
 > All-in-one MQTT debugging & stress-testing desktop client
-<div align="center">
+ <div align="center">
+
 English | [简体中文](./README.md)
+
 </div>
 
 **MQTTW** is a professional MQTT desktop debugging tool built on **Wails3 + Go + Vue3**, with full support for the **MQTT 3.1 / 3.1.1 / 5.0** protocols. It combines connection debugging, message publishing/subscribing, multi-connection management, and large-scale client stress testing in one tool — ideal for IoT development, Broker integration verification, and performance testing scenarios.
