@@ -22,15 +22,16 @@
         <template v-for="menuInfo in menulist" >
           <a-menu-item :key="menuInfo.name" v-if="!menuInfo.meta.hideInMenu">
             <div class="menu-btn">
-              <div class="menu-icon"><icon-font :name="current==menuInfo.name?menuInfo.meta.selecteicon:menuInfo.meta.icon" /></div>
+              <div class="menu-icon"><icon-font :name="current==menuInfo.name?menuInfo.meta.selecteicon:menuInfo.meta.icon" :size="19"/></div>
               <div class="menu-text">{{ menuInfo.meta.locale?$t(menuInfo.meta.locale):menuInfo.meta.title }}</div>
+              <a-tag v-if="!collapsed && menuInfo.name==='gateway'" size="small" color="orange" class="menu-tag">实验性</a-tag>
             </div>
           </a-menu-item>
         </template>
       </a-menu>
       <div class="footer" :class="{factive:current=='setting'}" @click="handleSetting">
         <div class="menu-btn">
-          <div class="menu-icon"><icon-font name="icon-xitong" class="icon"/></div>
+          <div class="menu-icon"><icon-font name="icon-xitong" class="icon" :size="19"/></div>
           <div class="menu-text">{{ $t("menu.setting") }}</div>
         </div>
       </div>
@@ -82,7 +83,7 @@
     .user {//头像
       text-align: center;
       padding: 8px;
-      // margin-bottom: 10px;
+      margin-bottom:3px;
       // border-bottom: 1px solid var(--color-neutral-3);
       .name{
         padding-top: 5px;
@@ -137,6 +138,11 @@
         }
         .menu-text{
            white-space: normal;
+        }
+        .menu-tag{
+          margin-left: 4px;
+          flex-shrink: 0;
+          line-height: 1;
         }
       }
     }

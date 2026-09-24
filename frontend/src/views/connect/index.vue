@@ -62,7 +62,7 @@
             @connect-event="onConnectEvent"
           />
         </div>
-        <div v-if="!menuData||menuData.length==0" style="margin-top: 35%;">
+        <div v-if="(!menuData||menuData.length==0)&&!collapsed" style="margin-top: 35%;">
           <a-empty  description="请添加连接/分组"/>
         </div>
       </a-menu>
@@ -95,7 +95,7 @@ import Sortable from 'sortablejs'
 import RecursiveMenuItem, { type MenuItem } from './components/RecursiveMenuItem.vue'
 import { FormInstance,Modal,Message} from '@arco-design/web-vue';
 //go 数据接口
-import {MqttConnectionService} from "/#/gofly/internal/service";
+import {MqttConnectionService,MqttClientService} from "/#/gofly/internal/service";
 //页面
 import DefaultPage from './page/DefaultPage.vue'
 import Operation from './page/Operation.vue'
@@ -180,7 +180,6 @@ const handleBeforeOk = async(done) => {
 //提交连接成功返回
 const onAddForm=(id:number,type:number)=>{
   getData()
-  console.log("提交连接成功返回:",id)
   openId.value=id
   selectedKeys.value=[id]//默认选中
   if(type==1){
@@ -314,7 +313,7 @@ const getData=async()=>{
   }
 }
 //删除数据
-const delData=async(id:number,title:string)=>{
+const delData=async(id:number,title:string,is_group:number)=>{
   Modal.warning({
     title: `是否确认删除${title}？`,
     content: '删除后将无法恢复，需要谨慎操作哦！',
@@ -331,6 +330,14 @@ const delData=async(id:number,title:string)=>{
             AddPId.value=0
             openId.value=0
             fromId.value=0
+            //分组时断开其分组下的连接数据
+            if(is_group==1){
+              for (const id of res.data) {
+                await MqttClientService.Disconnect(id)
+              }
+            }else{
+              MqttClientService.Disconnect(id)
+            }
           }else{
             Message.error({content:res.message,id:"del",duration:2000})
           }
@@ -369,7 +376,7 @@ const onGroupEvent=(type: string,item:MenuItem)=>{
     groupModal.value.visible=true
     groupModal.value.data={id:item.id,pid:item.pid,title:item.title}
   }else if(type=="delete"){
-    delData(item.id,item.title)
+    delData(item.id,item.title,1)
   }else if(type=="addconnect"){
     handleAddConnect(item.id)
   }
@@ -384,7 +391,7 @@ const onConnectEvent=(type: string,item:MenuItem)=>{
     AddPId.value=item.pid
     selectedKeys.value=[item.id]//默认选中
   }else if(type=="delete"){
-    delData(item.id,item.title)
+    delData(item.id,item.title,0)
   }
 }
 //清除全部数据

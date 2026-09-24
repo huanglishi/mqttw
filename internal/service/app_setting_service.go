@@ -22,7 +22,7 @@ var minimizeOnClose atomic.Bool
 var hotkeysRegistered atomic.Bool
 
 const (
-	appVersion   = "1.0.0"
+	appVersion   = "1.0.6"
 	repoURL      = "https://gitee.com/huang_li_shi_admin/mqttw"
 	communityURL = "https://goflys.cn/"
 	gmqtURL      = "https://goflys.cn/gmqt"
@@ -218,4 +218,3 @@ func openFolder(dir string) error {
 		return exec.Command("xdg-open", dir).Start()
 	}
 }
-

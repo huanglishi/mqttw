@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "34358871",
+      "name": "网关设备-copy",
+      "font_class": "gateway-selecte",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "48591441",
+      "name": "网关设备-copy-copy",
+      "font_class": "gateway",
+      "unicode": "e8e4",
+      "unicode_decimal": 59620
+    },
+    {
       "icon_id": "39312750",
       "name": "收信管理-copy",
       "font_class": "receive_message",

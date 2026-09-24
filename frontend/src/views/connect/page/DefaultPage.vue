@@ -178,7 +178,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     margin-top: 8px;
-
+    padding: 0px 10px;
     @media (max-width: 900px) {
       grid-template-columns: 1fr;
     }

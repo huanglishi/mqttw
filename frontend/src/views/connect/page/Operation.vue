@@ -253,6 +253,9 @@
   import { MessageModel } from '@/types/global'
   import dayjs from 'dayjs'
   import { matchTopicMethod } from '@/utils/topicMatch'
+  import { useMqttStore } from '@/store'
+  const mqttStore = useMqttStore()
+
   //go 数据接口
   import {
     MqttSubscriptionService,
@@ -352,6 +355,7 @@
             closable: true,
           })
         }else{
+          formData.value.connected=0
           Message.error({content:res.message,id:"connect",duration:2000})
         }
       } catch (error) {
@@ -457,9 +461,10 @@
             Object.assign(msgData,{retain:retainVal})
             const res =await MqttMessageService.Save(JSON.stringify(msgData));
             sendLoading.value=false
+            Message.loading({content:"发送中",id:"save",duration:2})
             if(res.code==0){
               getMessageData()
-              Message.success({content:res.message,id:"save",duration:2000})
+              // Message.success({content:res.message,id:"save",duration:2000})
             }else{
               Message.error({content:res.message,id:"save",duration:2000})
             }
@@ -539,14 +544,18 @@
     }
   }
   //监听props数据
-  watch(props, (newVal, oldVal) => {
+  watch(
+  () => ({ ...props }), // getter 返回新对象，简单浅拷贝
+  async(newVal, oldVal) => {
+    await Events.Off(`mqtt:message:${oldVal.id}`)
+    await Events.On(`mqtt:message:${newVal.id}` , handleMqttMessage)
     getConnectionData()
     getTopicData()
     topicActiveIndex.value=0
     topicActive.value="all"
     sendLoading.value=false
     getMessageData()
-  }, { deep: true })
+  }, { deep: true } )
   //获取主题数据
   const getTopicData=async()=>{
     const res =await MqttSubscriptionService.GetList(props.id);
@@ -729,6 +738,8 @@
     topicActive.value="all"
     getMessageData()
     await nextTick()
+    Events.On(`mqtt:message:${props.id}` , handleMqttMessage)
+    mqttStore.setCurrentConn(props.id)
     if(!headerRef.value) return
     const dom = headerRef.value.$el as HTMLElement
     const updateHeight = ()=>{
@@ -741,11 +752,11 @@
     resizeObserver.observe(dom)
     //高度监听
     await refreshSize()
-    Events.On('mqtt:message:' + props.id, handleMqttMessage)
     window.addEventListener('resize', handleResize)
   })
   onUnmounted(() => {
-    Events.Off('mqtt:message:' + props.id)
+    Events.Off(`mqtt:message:${props.id}`)
+    mqttStore.setCurrentConn(0)
     window.removeEventListener('resize', handleResize)
     if(timer) clearTimeout(timer)
   })
@@ -881,6 +892,9 @@
         cursor: pointer;
         &.active {
           color: rgb(var(--arcoblue-6));
+        }
+        &:hover{
+          color: var(--color-neutral-10);
         }
       }
     }

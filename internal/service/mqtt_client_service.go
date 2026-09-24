@@ -202,7 +202,8 @@ func (s *MqttClientService) Connect(id int32) any {
 		}
 		app := application.Get()
 		app.Event.Emit("mqtt:all_message", string(data))
-		app.Event.Emit("mqtt:message:26", string(data))
+		fmt.Println("消息回调", dto.ID)
+		app.Event.Emit(fmt.Sprintf("mqtt:message:%v", dto.ID), string(data))
 	})
 
 	// 6. 连接前先断开池中同 ID 旧客户端：

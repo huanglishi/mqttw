@@ -14,7 +14,7 @@ import (
 
 // DSN data source name
 func GormSqliteDSN(dbConf_arr map[string]any) string {
-	dsn := fmt.Sprintf("file:%v?_pragma=foreign_keys(1)&_pragma=journal_mode(WAL)&_pragma=busy_timeout(5000)", dbConf_arr["dbFile"])
+	dsn := fmt.Sprintf("file:%v?_pragma=foreign_keys(1)&_pragma=journal_mode(DELETE)&_pragma=busy_timeout(5000)", dbConf_arr["dbFile"])
 	return dsn
 }
 

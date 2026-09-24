@@ -6,6 +6,13 @@
 import { Call as $Call, CancellablePromise as $CancellablePromise } from "@wailsio/runtime";
 
 /**
+ * 清除全部数据
+ */
+export function ClearData(): $CancellablePromise<any> {
+    return $Call.ByID(2467781568);
+}
+
+/**
  * Copy 复制连接数据
  */
 export function Copy(id: number): $CancellablePromise<any> {

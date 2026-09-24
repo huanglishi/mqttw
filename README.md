@@ -191,11 +191,7 @@ MQTTW/
         ├── router/             # 路由
         └── locale/             # 国际化
 ```
-### 开发启动
-```
-wails3 dev
-```
-### 构建和包装
+## 构建和包装
 ```
 wails3 package
 ```
@@ -203,6 +199,10 @@ wails3 package
 使用NSIS安装器
 ```
 wails3 package GOOS=windows INSTALL_SCOPE=user  
+```
+Windows 32 位
+```
+wails3 package GOOS=windows GOARCH=386 INSTALL_SCOPE=user
 ```
 MSIX 软件包，对于 Microsoft Store 发行版或现代 Windows 部署：
 ```

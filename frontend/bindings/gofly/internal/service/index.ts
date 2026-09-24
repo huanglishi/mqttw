@@ -4,6 +4,7 @@
 import * as AppSettingService from "./appsettingservice.js";
 import * as MqttClientService from "./mqttclientservice.js";
 import * as MqttConnectionService from "./mqttconnectionservice.js";
+import * as MqttGatewayService from "./mqttgatewayservice.js";
 import * as MqttMessageRecordService from "./mqttmessagerecordservice.js";
 import * as MqttMessageService from "./mqttmessageservice.js";
 import * as MqttStressService from "./mqttstressservice.js";
@@ -14,6 +15,7 @@ export {
     AppSettingService,
     MqttClientService,
     MqttConnectionService,
+    MqttGatewayService,
     MqttMessageRecordService,
     MqttMessageService,
     MqttStressService,

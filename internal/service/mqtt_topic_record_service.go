@@ -13,7 +13,7 @@ type MqttTopicRecordService struct{}
 // GetList 获取消息记录列表
 func (g *MqttTopicRecordService) GetList() any {
 	topicDB := dao.Query().MqttTopicRecord
-	list, err := topicDB.Order(topicDB.ID.Asc()).Find()
+	list, err := topicDB.Order(topicDB.ID.Desc()).Find()
 	if err != nil {
 		return gf.Failed().SetMsg(err.Error())
 	}

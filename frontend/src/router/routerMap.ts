@@ -34,6 +34,18 @@ const constantRouterMap = [
         }
       },
       {
+        path: '/gateway',
+        name: 'gateway',
+        component: () => import('@/views/gateway/index.vue'),
+        params: { id: 'gateway' },
+        meta: {
+          title: '网关',
+          locale: 'menu.gateway',
+          icon: 'icon-gateway',
+          selecteicon: 'icon-gateway-selecte',
+        }
+      },
+      {
         path: '/gmqt',
         name: 'gmqt',
         component: () => import('@/views/gmqt/index.vue'),

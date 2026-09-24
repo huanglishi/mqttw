@@ -2,6 +2,7 @@ export default {
   'menu.connect': '连接',
   'menu.help': '关于',
   'menu.gmqt': 'GMQT',
+  'menu.gateway': '网关',
   'menu.setting':"设置",
 
   // size

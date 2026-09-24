@@ -17,49 +17,53 @@ import (
 
 var (
 	Q                 = new(Query)
+	ModbusDevice      *modbusDevice
+	ModbusPoint       *modbusPoint
 	MqttConnection    *mqttConnection
 	MqttMessage       *mqttMessage
 	MqttMessageRecord *mqttMessageRecord
 	MqttSubscription  *mqttSubscription
 	MqttTopicRecord   *mqttTopicRecord
 	SqliteSequence    *sqliteSequence
-	User              *user
 )
 
 func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 	*Q = *Use(db, opts...)
+	ModbusDevice = &Q.ModbusDevice
+	ModbusPoint = &Q.ModbusPoint
 	MqttConnection = &Q.MqttConnection
 	MqttMessage = &Q.MqttMessage
 	MqttMessageRecord = &Q.MqttMessageRecord
 	MqttSubscription = &Q.MqttSubscription
 	MqttTopicRecord = &Q.MqttTopicRecord
 	SqliteSequence = &Q.SqliteSequence
-	User = &Q.User
 }
 
 func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
 		db:                db,
+		ModbusDevice:      newModbusDevice(db, opts...),
+		ModbusPoint:       newModbusPoint(db, opts...),
 		MqttConnection:    newMqttConnection(db, opts...),
 		MqttMessage:       newMqttMessage(db, opts...),
 		MqttMessageRecord: newMqttMessageRecord(db, opts...),
 		MqttSubscription:  newMqttSubscription(db, opts...),
 		MqttTopicRecord:   newMqttTopicRecord(db, opts...),
 		SqliteSequence:    newSqliteSequence(db, opts...),
-		User:              newUser(db, opts...),
 	}
 }
 
 type Query struct {
 	db *gorm.DB
 
+	ModbusDevice      modbusDevice
+	ModbusPoint       modbusPoint
 	MqttConnection    mqttConnection
 	MqttMessage       mqttMessage
 	MqttMessageRecord mqttMessageRecord
 	MqttSubscription  mqttSubscription
 	MqttTopicRecord   mqttTopicRecord
 	SqliteSequence    sqliteSequence
-	User              user
 }
 
 func (q *Query) Available() bool { return q.db != nil }
@@ -69,13 +73,14 @@ func (q *Query) UnderlyingDB() *gorm.DB { return q.db }
 func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
 		db:                db,
+		ModbusDevice:      q.ModbusDevice.clone(db),
+		ModbusPoint:       q.ModbusPoint.clone(db),
 		MqttConnection:    q.MqttConnection.clone(db),
 		MqttMessage:       q.MqttMessage.clone(db),
 		MqttMessageRecord: q.MqttMessageRecord.clone(db),
 		MqttSubscription:  q.MqttSubscription.clone(db),
 		MqttTopicRecord:   q.MqttTopicRecord.clone(db),
 		SqliteSequence:    q.SqliteSequence.clone(db),
-		User:              q.User.clone(db),
 	}
 }
 
@@ -90,35 +95,38 @@ func (q *Query) WriteDB() *Query {
 func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 	return &Query{
 		db:                db,
+		ModbusDevice:      q.ModbusDevice.replaceDB(db),
+		ModbusPoint:       q.ModbusPoint.replaceDB(db),
 		MqttConnection:    q.MqttConnection.replaceDB(db),
 		MqttMessage:       q.MqttMessage.replaceDB(db),
 		MqttMessageRecord: q.MqttMessageRecord.replaceDB(db),
 		MqttSubscription:  q.MqttSubscription.replaceDB(db),
 		MqttTopicRecord:   q.MqttTopicRecord.replaceDB(db),
 		SqliteSequence:    q.SqliteSequence.replaceDB(db),
-		User:              q.User.replaceDB(db),
 	}
 }
 
 type queryCtx struct {
+	ModbusDevice      IModbusDeviceDo
+	ModbusPoint       IModbusPointDo
 	MqttConnection    IMqttConnectionDo
 	MqttMessage       IMqttMessageDo
 	MqttMessageRecord IMqttMessageRecordDo
 	MqttSubscription  IMqttSubscriptionDo
 	MqttTopicRecord   IMqttTopicRecordDo
 	SqliteSequence    ISqliteSequenceDo
-	User              IUserDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
+		ModbusDevice:      q.ModbusDevice.WithContext(ctx),
+		ModbusPoint:       q.ModbusPoint.WithContext(ctx),
 		MqttConnection:    q.MqttConnection.WithContext(ctx),
 		MqttMessage:       q.MqttMessage.WithContext(ctx),
 		MqttMessageRecord: q.MqttMessageRecord.WithContext(ctx),
 		MqttSubscription:  q.MqttSubscription.WithContext(ctx),
 		MqttTopicRecord:   q.MqttTopicRecord.WithContext(ctx),
 		SqliteSequence:    q.SqliteSequence.WithContext(ctx),
-		User:              q.User.WithContext(ctx),
 	}
 }
 

@@ -401,7 +401,6 @@
        Object.assign(formData.value,{will:JSON.parse(will)})
       if(res.data.user_properties)
       formData.value.user_properties=JSON.parse(data.user_properties)
-      console.log("获取编辑数据",formData.value)
     }
   }
   //初始数据
@@ -437,7 +436,6 @@
       const filedata = await Dialogs.OpenFile({Title:"选择证书文件"})
       if (filedata) {
           formData.value[key] = filedata
-          console.log('选择附件结果：:', filedata)
       }
   }
   //生成id字符串

@@ -4,6 +4,8 @@ import (
 	"embed"
 	"gofly/internal/service"
 	"log"
+	"os"
+	"path/filepath"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
@@ -28,6 +30,13 @@ func init() {
 // and starts a goroutine that emits a time-based event every second. It subsequently runs the application and
 // logs any error that might occur.
 func main() {
+	// 定位数据目录：优先 exe 同级 resource（安装场景），回退当前工作目录（dev 场景）
+	if exePath, err := os.Executable(); err == nil {
+		exeDir := filepath.Dir(exePath)
+		if _, err := os.Stat(filepath.Join(exeDir, "resource", "db", "data.db")); err == nil {
+			_ = os.Chdir(exeDir)
+		}
+	}
 
 	// var serviceList []application.Service
 	// for _, inst := range svcs.All {
@@ -95,6 +104,9 @@ func main() {
 			win.Hide()
 		}
 	})
+
+	// 退出钩子：进程退出前显式停止 Modbus 采集（释放串口/连接、即时发送 MQTT 遗嘱）
+	app.OnShutdown(service.StopGatewayOnExit)
 
 	// Run the application. This blocks until the application has been exited.
 	err := app.Run()

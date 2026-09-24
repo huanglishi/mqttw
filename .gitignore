@@ -17,3 +17,6 @@ build/android/overlay.json
 build/android/gen/
 resource/db/data.db-shm
 resource/db/data.db-wal
+# logs
+*.log
+*.log.err

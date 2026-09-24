@@ -9,6 +9,7 @@ func NewAppServices() []application.Service {
 		application.NewService(&AppSettingService{}),
 		application.NewService(&MqttClientService{}),
 		application.NewService(&MqttConnectionService{}),
+		application.NewService(&MqttGatewayService{}),
 		application.NewService(&MqttMessageRecordService{}),
 		application.NewService(&MqttMessageService{}),
 		application.NewService(&MqttStressService{}),

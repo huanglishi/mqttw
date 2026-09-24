@@ -1,10 +1,10 @@
 export default {
-  'menu.home': 'Home',
-  'menu.exception': 'Exception',
-  'menu.user': 'User Center',
-  'menu.system':"System",
-  'menu.datacenter': 'Data Center',
-  'menu.developer': 'Dev Tools',
+  'menu.connect': 'Connect',
+  'menu.help': 'About',
+  'menu.gmqt': 'GMQT',
+  'menu.gateway': 'Gateway',
+  'menu.setting':"Settings",
+
   // size
   'searchTable.size.mini': 'mini',
   'searchTable.size.small': 'small',

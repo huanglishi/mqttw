@@ -48,17 +48,14 @@ func normalizeData(data map[string]interface{}) map[string]interface{} {
 		col := camelToSnake(k)
 		switch col {
 		case "id", "create_time", "update_time":
-			// 主键与审计字段不允许通过表单修改
 			continue
 		}
 		switch t := v.(type) {
 		case float64:
-			// JSON 数字统一转 int64，避免 REAL 混入 INTEGER 列
 			if t == float64(int32(t)) {
 				v = int32(t)
 			}
 		case map[string]interface{}, []interface{}:
-			// properties / will / userProperties 存入 TEXT 列
 			if b, err := json.Marshal(t); err == nil {
 				v = string(b)
 			}
@@ -86,7 +83,6 @@ func (g *MqttConnectionService) GetList() any {
 		list = gf.GetRuleTreeArray(list, 0)
 	}
 	return gf.Success().SetMsg("获取数据成功").SetData(list)
-	// return gf.Map{"code": 0, "message": "获取数据成功", "data": list}
 }
 
 // SaveGroup 保存/更新分组数据
@@ -137,17 +133,19 @@ func (s *MqttConnectionService) SaveData(param string) any {
 	if len(md) == 0 {
 		return gf.Failed().SetMsg("没有可更新的字段")
 	}
-	res, err := connectionDB.Where(connectionDB.ID.Eq(int32(f_id))).Updates(md)
+	_, err := connectionDB.Where(connectionDB.ID.Eq(int32(f_id))).Updates(md)
 	if err != nil {
 		return gf.Failed().SetMsg(err.Error())
 	}
-	return gf.Success().SetMsg("更新数据成功").SetData(res.RowsAffected)
+	return gf.Success().SetMsg("更新数据成功").SetData(f_id)
 }
 
 // Del 删除数据
 func (s *MqttConnectionService) Del(id int32) any {
 	connectionDB := dao.Query().MqttConnection
-	res, err := connectionDB.Where(connectionDB.ID.Eq(id)).Delete()
+	var is_group int32
+	connectionDB.Where(connectionDB.ID.Eq(id)).Select(connectionDB.IsGroup).Scan(&is_group)
+	_, err := connectionDB.Where(connectionDB.ID.Eq(id)).Delete()
 	if err != nil {
 		return gf.Failed().SetMsg(err.Error())
 	}
@@ -156,7 +154,54 @@ func (s *MqttConnectionService) Del(id int32) any {
 	subDB.Where(subDB.ConnectionID.Eq(id)).Delete()
 	msgDB := dao.Query().MqttMessage
 	msgDB.Where(msgDB.ConnectionID.Eq(id)).Delete()
-	return gf.Success().SetMsg("删除数据成功").SetData(res)
+	connectedIds := make([]int32, 0) // 全部在连接中id
+	//删除分组下的所有数据（递归删除多级子分组及其下连接）
+	if is_group > 0 {
+		// 递归收集该分组下全部后代 ID
+		childIds := make([]int32, 0) // 全部后代（含子分组、连接）
+		connIds := make([]int32, 0)  // 后代中的连接（需级联删订阅、消息）
+		if err := s.collectChildIds([]int32{id}, &childIds, &connIds); err != nil {
+			return gf.Failed().SetMsg("查询分组子数据失败，" + err.Error())
+		}
+		if len(childIds) > 0 {
+			// 先删后代连接的订阅主题、消息记录
+			if len(connIds) > 0 {
+				subDB.Where(subDB.ConnectionID.In(connIds...)).Delete()
+				msgDB.Where(msgDB.ConnectionID.In(connIds...)).Delete()
+			}
+			//获取连接中的数据id
+			connectionDB.Where(connectionDB.ID.In(childIds...), connectionDB.Connected.Eq(1)).Pluck(connectionDB.ID, &connectedIds)
+			// 再删除全部子分组与连接
+			if _, err := connectionDB.Where(connectionDB.ID.In(childIds...)).Delete(); err != nil {
+				return gf.Failed().SetMsg(err.Error())
+			}
+		}
+	}
+	return gf.Success().SetMsg("删除数据成功").SetData(connectedIds)
+}
+
+// collectChildIds 递归收集 parentIds 下的全部后代 ID（支持多级嵌套分组）
+// childIds：收集到的全部后代（子分组 + 连接）；connIds：其中 is_group=0 的连接 ID
+func (s *MqttConnectionService) collectChildIds(parentIds []int32, childIds *[]int32, connIds *[]int32) error {
+	// 递归终止：没有待查的父级
+	if len(parentIds) == 0 {
+		return nil
+	}
+	connectionDB := dao.Query().MqttConnection
+	children, err := connectionDB.Where(connectionDB.Pid.In(parentIds...)).Find()
+	if err != nil {
+		return err
+	}
+	nextParentIds := make([]int32, 0, len(children))
+	for _, c := range children {
+		*childIds = append(*childIds, c.ID)
+		nextParentIds = append(nextParentIds, c.ID) // 继续向下递归
+		if c.IsGroup == 0 {
+			*connIds = append(*connIds, c.ID)
+		}
+	}
+	// 以当前层 ID 作为下一层的父级继续查找
+	return s.collectChildIds(nextParentIds, childIds, connIds)
 }
 
 // Update 更新数据
@@ -213,6 +258,7 @@ func (s *MqttConnectionService) Copy(id int32) any {
 	}
 	copyData.Title = copyData.Title + "_copy"
 	copyData.ClientID = copyData.ClientID + "_copy"
+	copyData.Connected = 0
 	err = connectionDB.Omit(connectionDB.ID, connectionDB.CreatedAt, connectionDB.UpdatedAt).Create(copyData)
 	if err != nil {
 		return gf.Failed().SetMsg(err.Error())
